@@ -1,7 +1,6 @@
 import tweepy
 import configparser
-import sys
-
+import os
 
 if __name__ == "__main__":
     config = configparser.ConfigParser()
@@ -19,12 +18,17 @@ if __name__ == "__main__":
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token, access_token_secret)
     api = tweepy.API(auth)
-    media = api.media_upload("meme.jpg")
-
+    meme_folder = "memeFolder"
+    meme_files = os.listdir(meme_folder)
+    media_path = os.path.join(meme_folder, meme_files[0])
+    tweet_text = ""
+    media = api.media_upload(media_path)
+    text = ""
     # Get the media ID from the uploaded media
     media_id = media.media_id
     client.create_tweet(
-        text="",
+        text=text,
         media_ids=[media_id],
     )
-# TODO: add folder, automate web scrapping, make it work for jpg or png
+    os.remove(media_path)
+# TODO: automate web scrapping,
