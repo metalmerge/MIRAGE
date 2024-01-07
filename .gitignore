@@ -3,6 +3,11 @@ __pycache__/
 *.py[cod]
 *$py.class
 \memeFolder
+/env
+/images
+__pycache__
+token.pickle
+error.txt
 # C extensions
 *.so
 config.ini
