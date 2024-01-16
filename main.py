@@ -3,6 +3,8 @@ import configparser
 import os
 import random
 from SubDownload import reddit_image_grabber
+import time
+from win10toast import ToastNotifier
 
 config = configparser.ConfigParser()
 config.read(r"C:\Users\ermak\OneDrive\Documents\MIRAGE\config.ini")
@@ -61,6 +63,8 @@ def main():
 
         if len(meme_files) < 3:
             print("Alert: There are less than 3 images in the memeFolder.")
+            toaster = ToastNotifier()
+            toaster.show_toast("ATDP", "Program Complete", duration=100)
             # import yagmail
             # try:
             #     yag = yagmail.SMTP(sender_email, password)

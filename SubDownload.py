@@ -26,8 +26,10 @@ def reddit_image_grabber(time, POST_SEARCH_AMOUNT):
     # Get token file to log into reddit.
     # You must enter your....
     # client_id - client secret - user_agent - username password
-    if os.path.exists("token.pickle"):
-        with open("token.pickle", "rb") as token:
+    if os.path.exists(r"C:\Users\ermak\OneDrive\Documents\MIRAGE\token.pickle"):
+        with open(
+            r"C:\Users\ermak\OneDrive\Documents\MIRAGE\token.pickle", "rb"
+        ) as token:
             creds = pickle.load(token)
     else:
         creds = create_token()
