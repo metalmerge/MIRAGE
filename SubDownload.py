@@ -19,8 +19,12 @@ def create_folder(image_path):
 def reddit_image_grabber(time, POST_SEARCH_AMOUNT):
     # Path to save images
     dir_path = os.path.dirname(os.path.realpath(__file__))
-    image_path = os.path.join(dir_path, "images/")
-    ignore_path = os.path.join(dir_path, "ignore_images/")
+    image_path = os.path.join(
+        dir_path, r"C:\Users\ermak\OneDrive\Documents\MIRAGE\images/"
+    )
+    ignore_path = os.path.join(
+        dir_path, r"C:\Users\ermak\OneDrive\Documents\MIRAGE\ignore_images/"
+    )
     create_folder(image_path)
 
     # Get token file to log into reddit.
@@ -33,7 +37,9 @@ def reddit_image_grabber(time, POST_SEARCH_AMOUNT):
             creds = pickle.load(token)
     else:
         creds = create_token()
-        pickle_out = open("token.pickle", "wb")
+        pickle_out = open(
+            r"C:\Users\ermak\OneDrive\Documents\MIRAGE\token.pickle", "wb"
+        )
         pickle.dump(creds, pickle_out)
 
     reddit = praw.Reddit(
@@ -44,7 +50,7 @@ def reddit_image_grabber(time, POST_SEARCH_AMOUNT):
         password=creds["password"],
     )
 
-    f_final = open("sub_list.csv", "r")
+    f_final = open(r"C:\Users\ermak\OneDrive\Documents\MIRAGE\sub_list.csv", "r")
     # img_notfound = cv2.imread("imageNF.png")
     for line in f_final:
         sub = line.strip()
@@ -85,6 +91,7 @@ def reddit_image_grabber(time, POST_SEARCH_AMOUNT):
 
                     if not ignore_flag:
                         cv2.imwrite(f"{image_path}{sub}-{submission.id}.png", image)
+                        print(f"Image saved. {submission.url.lower()}")
                         count += 1
 
                 except Exception as e:

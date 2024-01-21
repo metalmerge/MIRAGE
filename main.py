@@ -78,7 +78,7 @@ def main():
 
         os.remove(media_path)
     except Exception as e:
-        with open("error.txt", "w") as file:
+        with open(r"C:\Users\ermak\OneDrive\Documents\MIRAGE\error.txt", "w") as file:
             file.write(str(e))
 
 
