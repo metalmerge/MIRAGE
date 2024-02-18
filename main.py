@@ -3,7 +3,7 @@ import configparser
 import os
 import random
 from SubDownload import reddit_image_grabber
-import time
+import pygame
 from win10toast import ToastNotifier
 
 config = configparser.ConfigParser()
@@ -45,6 +45,14 @@ def upload_tweet_with_media(api, media_path):
     )
 
 
+def play_sound(music_file):
+    pygame.init()
+    sound = pygame.mixer.Sound(music_file)
+    sound.play()
+    sound.set_volume(1)
+    pygame.mixer.music.stop()
+
+
 def main():
     try:
         reddit_image_grabber("week", 10)
@@ -62,6 +70,7 @@ def main():
         print(f"There are {len(meme_files)-1} images in the memeFolder.")
 
         if len(meme_files) < 3:
+            play_sound("alert_notification.mp3")
             print("Alert: There are less than 3 images in the memeFolder.")
             toaster = ToastNotifier()
             toaster.show_toast("ATDP", "Program Complete", duration=100)
