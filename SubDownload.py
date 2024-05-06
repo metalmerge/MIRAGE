@@ -20,7 +20,7 @@ def reddit_image_grabber(time, POST_SEARCH_AMOUNT):
     # Path to save images
     dir_path = os.path.dirname(os.path.realpath(__file__))
     image_path = os.path.join(
-        dir_path, r"C:\Users\ermak\OneDrive\Documents\MIRAGE\images/"
+        dir_path, r"C:\Users\ermak\OneDrive\Documents\MIRAGE\memeFolder/"
     )
     ignore_path = os.path.join(
         dir_path, r"C:\Users\ermak\OneDrive\Documents\MIRAGE\ignore_images/"
